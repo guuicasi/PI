@@ -255,21 +255,23 @@ public class MainPage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private int getIndexProductById(long id) {
-        for (Product product : Perfumaria.productList) {
-            if(product.id == id) {
-                return Perfumaria.productList.indexOf(product);
-            };
+        Product product = Perfumaria.productList.stream().filter(e -> e.id == id).findFirst().orElse(null);
+        
+        if (product == null) {
+            return -1;
         }
-        return -1;
+
+        return Perfumaria.productList.indexOf(product);
     }
 
     private int getIndexCartProductById(long id) {
-        for (Product product : Perfumaria.cartList) {
-            if(product.id == id) {
-                return Perfumaria.cartList.indexOf(product);
-            };
+        Product product = Perfumaria.cartList.stream().filter(e -> e.id == id).findFirst().orElse(null);
+
+        if (product == null) {
+            return -1;
         }
-        return -1;
+
+        return Perfumaria.cartList.indexOf(product);
     }
 
 
@@ -351,6 +353,10 @@ public class MainPage extends javax.swing.JFrame {
         updateQuantityProducts();
 
         Perfumaria.cartList = new ArrayList<Product>();
+
+        Perfumaria.productList = productService.getAllProducts();
+
+        setTableListProducts();
 
         qtdSpinner.setEnabled(false);
         addButton.setEnabled(false);

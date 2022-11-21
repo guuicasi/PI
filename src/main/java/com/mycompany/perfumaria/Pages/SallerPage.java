@@ -455,13 +455,14 @@ public class SallerPage extends javax.swing.JFrame {
     }//GEN-LAST:event_editButtonActionPerformed
 
 
-    private int getIndexProductById(int id) {
-        for (Product product : Perfumaria.productList) {
-            if (product.id == id) {
-                return Perfumaria.productList.indexOf(product);
-            };  
+    private int getIndexProductById(long id) {
+        Product product = Perfumaria.productList.stream().filter(e -> e.id == id).findFirst().orElse(null);
+        
+        if (product == null) {
+            return -1;
         }
-        return -1;
+
+        return Perfumaria.productList.indexOf(product);
     }
 
     /**

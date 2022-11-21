@@ -55,6 +55,8 @@ public class RegisterPage extends javax.swing.JFrame {
         sallerButton.setSelected(true);
         clientButton.setSelected(false);
 
+        sallerButton.setEnabled(false);
+
         clientButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 clientButtonActionPerformed(evt);
@@ -253,12 +255,16 @@ public class RegisterPage extends javax.swing.JFrame {
 
     private void clientButtonActionPerformed(java.awt.event.ActionEvent evt) {                                             
         JToggleButton tBtn = (JToggleButton) evt.getSource();
-        sallerButton.setSelected(!tBtn.isSelected()); 
+        sallerButton.setSelected(!tBtn.isSelected());
+        sallerButton.setEnabled(true);
+        clientButton.setEnabled(false);
     }    
 
     private void sallerButtonActionPerformed(java.awt.event.ActionEvent evt) {                                          
         JToggleButton tBtn = (JToggleButton) evt.getSource();
         clientButton.setSelected(!tBtn.isSelected()); 
+        sallerButton.setEnabled(false);
+        clientButton.setEnabled(true);
     }  
 
     /**
