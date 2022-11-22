@@ -230,7 +230,7 @@ public class RegisterPage extends javax.swing.JFrame {
                     Perfumaria.person.setEmail(emailField.getText());
                     Perfumaria.person.setCpf(cpf);
                     Perfumaria.person.setPassword(new String(passwordField.getPassword()));
-                    Perfumaria.person.setType(sallerButton.isSelected() ? "Saller" : "CLIENT");
+                    Perfumaria.person.setType(sallerButton.isSelected() ? "SALLER" : "CLIENT");
                     Perfumaria.person.setAddress(new Address());
                     Perfumaria.person.setSmartphone(smartphone);
                     
