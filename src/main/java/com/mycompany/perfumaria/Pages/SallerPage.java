@@ -248,7 +248,7 @@ public class SallerPage extends javax.swing.JFrame {
                 .addContainerGap(9, Short.MAX_VALUE))
         );
 
-        titleLable.setText("Perfumaria");
+        titleLable.setText("ADIMO");
 
         exitButton.setText("Sair");
 

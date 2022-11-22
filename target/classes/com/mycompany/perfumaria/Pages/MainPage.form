@@ -40,7 +40,7 @@
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="194" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="229" max="-2" attributes="0"/>
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -71,7 +71,7 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="PERFUMARIA"/>
+        <Property name="text" type="java.lang.String" value="ADIMO"/>
       </Properties>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">

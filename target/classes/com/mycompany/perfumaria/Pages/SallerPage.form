@@ -347,7 +347,7 @@
     </Container>
     <Component class="javax.swing.JLabel" name="titleLable">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Perfumaria"/>
+        <Property name="text" type="java.lang.String" value="ADIMO"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="exitButton">

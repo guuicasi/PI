@@ -67,7 +67,7 @@ public class MainPage extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("PERFUMARIA");
+        jLabel1.setText("ADIMO");
 
         productsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {},
