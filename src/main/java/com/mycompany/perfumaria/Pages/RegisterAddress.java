@@ -62,6 +62,12 @@ public class RegisterAddress extends javax.swing.JFrame {
             }
         });
 
+        try {
+            cepField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####-###")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -71,6 +77,9 @@ public class RegisterAddress extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(163, 163, 163)
                         .addComponent(addressTitle))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(159, 159, 159)
+                        .addComponent(registerButton))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(30, 30, 30)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -117,7 +126,7 @@ public class RegisterAddress extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cepLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cepField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cepField, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(stateLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -143,7 +152,7 @@ public class RegisterAddress extends javax.swing.JFrame {
         if (RegisterPage.isNotEmpty(addressField.getText()) && RegisterPage.isNotEmpty(numberField.getText()) && RegisterPage.isNotEmpty(cepField.getText()) && RegisterPage.isNotEmpty(stateField.getText()) && RegisterPage.isNotEmpty(cityField.getText()) && RegisterPage.isNotEmpty(districtField.getText()) ) {
             Perfumaria.person.getAddress().setAddressName(addressField.getText());
             Perfumaria.person.getAddress().setNum(Integer.parseInt(numberField.getText()));
-            Perfumaria.person.getAddress().setCep(cepField.getText());
+            Perfumaria.person.getAddress().setCep(cepField.getText().replace("-", ""));
             Perfumaria.person.getAddress().setState(stateField.getText());
             Perfumaria.person.getAddress().setCity(cityField.getText());
             Perfumaria.person.getAddress().setDistrict(districtField.getText());
