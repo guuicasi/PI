@@ -4,6 +4,7 @@ import com.mycompany.perfumaria.Pages.LoginPage;
 import com.mycompany.perfumaria.Pages.MainPage;
 import com.mycompany.perfumaria.Pages.RegisterAddress;
 import com.mycompany.perfumaria.Pages.RegisterPage;
+import com.mycompany.perfumaria.Pages.ReportPage;
 import com.mycompany.perfumaria.Pages.SallerPage;
 import com.mycompany.perfumaria.model.Person;
 import com.mycompany.perfumaria.model.Product;
@@ -21,6 +22,7 @@ public class Perfumaria {
     public static RegisterPage registerPage;
     public static RegisterAddress registerAddress;
     public static SallerPage sallerPage;
+    public static ReportPage reportPage;
     
     public static List<Product> productList = new ArrayList<Product>();
     public static List<Sale> saleList = new ArrayList<Sale>();
@@ -29,6 +31,7 @@ public class Perfumaria {
 
     public static void main(String[] args) {
         setInstanceLoginPage();
+        setInstanceReportPage();
         loginPage.setVisible(true);
 
         productList = productService.getAllProducts();
@@ -52,5 +55,9 @@ public class Perfumaria {
 
     public static void setInstanceLoginPage() {
         loginPage = new LoginPage();
+    }
+
+    public static void setInstanceReportPage() {
+        reportPage = new ReportPage();
     }
 }

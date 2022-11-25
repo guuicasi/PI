@@ -37,7 +37,6 @@ public class SallerPage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        searchField = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         productsTable = new javax.swing.JTable();
@@ -62,6 +61,7 @@ public class SallerPage extends javax.swing.JFrame {
         titleLable = new javax.swing.JLabel();
         exitButton = new javax.swing.JButton();
         removeProductButton = new javax.swing.JButton();
+        reportButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -73,7 +73,6 @@ public class SallerPage extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        searchField.setText("Pesquisar...");
 
         productsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {},
@@ -260,6 +259,14 @@ public class SallerPage extends javax.swing.JFrame {
 
         removeProductButton.setText("Excluir");
 
+        reportButton.setText("Relátorio");
+
+        reportButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reportButtonActionPerformed(evt);
+            }
+        });
+
         removeProductButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 removeProductButtonActionPerformed(evt);
@@ -279,8 +286,9 @@ public class SallerPage extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(6, 6, 6)
                                 .addComponent(titleLable, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(140, 140, 140)
+                                .addComponent(reportButton, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(8, 8, 8))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -300,8 +308,8 @@ public class SallerPage extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(titleLable))
+                    .addComponent(titleLable)
+                    .addComponent(reportButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -352,6 +360,11 @@ public class SallerPage extends javax.swing.JFrame {
             Perfumaria.sallerPage.setVisible(false);
             Perfumaria.loginPage.setVisible(true);
         }
+    }
+
+    private void reportButtonActionPerformed(java.awt.event.ActionEvent evt) {
+            Perfumaria.sallerPage.setVisible(false);
+            Perfumaria.reportPage.setVisible(true);
     }
 
     private void removeProductButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -525,7 +538,7 @@ public class SallerPage extends javax.swing.JFrame {
     private javax.swing.JLabel registerProductLabel;
     private javax.swing.JSpinner registerQtdSpinner;
     private javax.swing.JButton removeProductButton;
-    private javax.swing.JTextField searchField;
+    private javax.swing.JButton reportButton;
     private javax.swing.JLabel titleLable;
     // End of variables declaration//GEN-END:variables
 }
