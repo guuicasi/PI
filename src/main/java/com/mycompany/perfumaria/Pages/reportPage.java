@@ -5,12 +5,14 @@
 package com.mycompany.perfumaria.Pages;
 
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 import com.mycompany.perfumaria.Perfumaria;
+import com.mycompany.perfumaria.model.Product;
 import com.mycompany.perfumaria.model.ReportSale;
 import com.mycompany.perfumaria.services.SaleService;
 
@@ -21,6 +23,8 @@ import com.mycompany.perfumaria.services.SaleService;
 public class ReportPage extends javax.swing.JFrame {
 
     private static final SaleService saleService = new SaleService();
+    private static long idSaleSelected;
+    private static List<ReportSale> saleList = new ArrayList<ReportSale>();
 
     /**
      * Creates new form reportPage
@@ -72,7 +76,7 @@ public class ReportPage extends javax.swing.JFrame {
             new Object [][] {
             },
             new String [] {
-                "Id", "CPF", "STATUS", "TOTAL"
+                "ID", "NOME", "PREÇO", "QUANTIDADE"
             }
         ));
         jScrollPane2.setViewportView(tableTwo);
@@ -109,6 +113,12 @@ public class ReportPage extends javax.swing.JFrame {
         backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backButtonActionPerformed(evt);
+            }
+        });
+
+        tableTwo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableMouseClicked(evt);
             }
         });
 
@@ -170,7 +180,7 @@ public class ReportPage extends javax.swing.JFrame {
 
     private void generateButtonActionPerformed(java.awt.event.ActionEvent evt) throws ParseException {
         if (firstDateInput.getText() != null && endDateInput.getText() != null) {
-            List<ReportSale> saleList = saleService.getFilterSales(firstDateInput.getText(), endDateInput.getText());
+            saleList = saleService.getFilterSales(firstDateInput.getText(), endDateInput.getText());
             setValuesTableTwo(saleList);
         } else {
             JOptionPane.showMessageDialog(null, "As duas datas precisam ser preenchidas!");
@@ -181,7 +191,50 @@ public class ReportPage extends javax.swing.JFrame {
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {
         Perfumaria.sallerPage.setVisible(true);
         Perfumaria.reportPage.setVisible(false);
-}
+    }
+
+    private int getIndexSaleById(long id) {
+        ReportSale sale = saleList.stream().filter(e -> e.getIdSale() == id).findFirst().orElse(null);
+        
+        if (sale == null) {
+            return -1;
+        }
+
+        return saleList.indexOf(sale);
+    }
+
+    public void tableMouseClicked(java.awt.event.MouseEvent evt) {
+        if(tableTwo.getSelectedRow() != -1){
+            idSaleSelected = Integer.parseInt(tableTwo.getValueAt(tableTwo.getSelectedRow(), 0).toString());
+            int indexSelected =  getIndexSaleById(idSaleSelected);
+
+            setTableOneValues(saleList.get(indexSelected).getProducts());
+        }
+    }
+
+    private void setTableOneValues(List<Product> products) {
+        tableOne.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+            },
+            new String [] {
+                "ID", "NOME", "PREÇO", "QUANTIDADE"
+            }
+        ){
+            boolean[] canEdit = new boolean [] {
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+
+        DefaultTableModel dtmProducts = (DefaultTableModel) tableOne.getModel();
+        
+        for (Product product : products) {
+            Object[] data = {product.getId(), product.getName(), product.getPrice(), product.getQuantity()};
+            dtmProducts.addRow(data);
+        }
+    }
 
     private void setValuesTableTwo(List<ReportSale> saleList){
         tableTwo.setModel(new javax.swing.table.DefaultTableModel(

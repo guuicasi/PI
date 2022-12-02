@@ -19,7 +19,7 @@ public class SaleProductsService implements SaleProductsInterface{
         
         try {
             Connection connection = ConnectionDB.getConnection();
-            PreparedStatement sqlCommand = connection.prepareStatement("SELECT * FROM TB_SALE_PRODUCTS WHERE SALE_ID = ?");
+            PreparedStatement sqlCommand = connection.prepareStatement("SELECT * FROM TB_SALE_PRODUCTS sp INNER JOIN TB_PRODUCTS prod ON sp.PRODUCT_ID = prod.ID WHERE sp.SALE_ID = ?");
 
             sqlCommand.setLong(1, id);
 

@@ -201,6 +201,11 @@ public class SaleService implements SaleInterface {
                 sale.setStatus(rs.getString("STATUS"));
                 sale.setTotal(rs.getDouble("TOTAL_VALUE"));
                 sale.setCpf(rs.getString("CPF"));
+
+                List<Product> products = saleProductsService.getBySaleId(sale.getIdSale());
+
+                sale.setProducts(products);
+
                 saleList.add(sale);
             }
             
